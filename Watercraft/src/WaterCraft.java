@@ -2,12 +2,12 @@
 
 public abstract class WaterCraft {
     protected String name;
-     private String produceDate;
-    private String material;
+     protected String produceDate;
+    protected String material;
     private String story;
-
-    // Polymorphie für diese Methode
     protected String purpose;
+
+
 
     WaterCraft(String _name, String _produceDate, String _material) {
         name = _name;
@@ -15,13 +15,18 @@ public abstract class WaterCraft {
         material = _material;
 
     }
-// noch nicht verwendet
+    // noch nicht verwendet, Anforderung auf Notion
     void GetStory(String _story) {
         story = _story;
     }
 
+
+    public abstract void Charactaristics();
+
+    // setpurpose wurde implementiert aber noch nicht gebraucht!
     public abstract void SetPurpose();
 
+    public abstract void GetShape();
 
 }
 

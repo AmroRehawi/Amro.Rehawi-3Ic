@@ -7,5 +7,14 @@ public class RowingBoat extends HumanPowerWaterCraft{
     public void SetPurpose() {
         HumanPowerWaterCraft.PedalesRecognizer();
     }
+    @Override
+    public void GetShape(){
+        System.out.println("                                \\\n" +
+                "                                  \\   O,\n" +
+                "                        \\___________\\/ )_________/\n" +
+                "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \\~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
+                "                                        \\");
+    }
+
 
 }

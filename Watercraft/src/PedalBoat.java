@@ -8,6 +8,16 @@ public class PedalBoat extends HumanPowerWaterCraft{
         HumanPowerWaterCraft.PedalesRecognizer();
     }
 
+    @Override
+    public void GetShape(){
+        System.out.println("                   v  ~.      v\n" +
+                "          v           /|\n" +
+                "                     / |          v\n" +
+                "              v     /__|__\n" +
+                "                  \\--------/\n" +
+                "~~~~~~~~~~~~~~~~~~~`~~~~~~'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    }
+
 
 
 }
