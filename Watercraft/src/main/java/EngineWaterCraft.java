@@ -21,6 +21,7 @@ public class EngineWaterCraft extends WaterCraft implements IRefuelable{
     EngineWaterCraft(String _name, String _produceDate, String _material){
 
         super(_name,_produceDate,_material);
+        Refuel();
     }
     /**
      * Methode zum Betanken des Wasserfahrzeugs.
@@ -31,7 +32,7 @@ public class EngineWaterCraft extends WaterCraft implements IRefuelable{
         String input;
         int refulingPercantage;
         Scanner sc = new Scanner(System.in);
-        System.out.println("Aktueller Füllstand " + fuelCapacity + "%");
+        System.out.println("Aktueller Fuellstand " + fuelCapacity + "%");
         System.out.println("Schiff tanken? ja/nein");
         input = sc.nextLine();
 

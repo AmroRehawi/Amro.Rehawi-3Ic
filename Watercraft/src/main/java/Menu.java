@@ -14,18 +14,35 @@ public class Menu {
     String produceDate;
     String material;
 
-    public void GenerateShips(){
-        // test methode
+    /**
+     * Diese Methode ruft das Menü auf und verarbeitet die Eingaben des Benutzers, bis das Spiel beendet wird.
+     */
+    public void CallMenu(){
+        int menuSelection=0;
+        boolean invalidInput;
+        boolean finishGame = false;
+        do{
+            ListMenu();
+            try {
+                invalidInput = false;
+                menuSelection = sc.nextInt();
+                DeleteScannerBuffer();
+                switch (menuSelection) {
+                    case 1 -> CreateShip();
+                    case 2 -> { System.out.println("Entschuldigung! Das Feature generieren ist momentan nicht verfuegbar"); Wait(2000);}
+                    case 3 -> ShowCharactaristics();
+                    case 4 -> DeleteShip();
+                    case 5 -> finishGame = FinishGame(finishGame);
+                }
 
-        WarShip yamato = new WarShip("IJN Yamato", "1990", "Stahl, Alu und Titan");
-        ContainerShip jellyFish = new ContainerShip("G.S. Jolly Jellyfish", "1890", "Stahl");
-        PedalBoat pedalPirates = new PedalBoat("Pedal Pirate", "1900", "Holz");
-        RowingBoat bananaBoat = new RowingBoat("banana Boat", "2010", "Holz");
-        myOcean.add(yamato);
-        myOcean.add(jellyFish);
-        myOcean.add(pedalPirates);
-        myOcean.add(bananaBoat);
+            }catch (Exception e) {
+                System.out.println("Eingabe ungueltig, nochmal probieren!");
+                invalidInput = true;
+                DeleteScannerBuffer();
+            }
+        }while (invalidInput || menuSelection == 0 || !finishGame);
     }
+
     /**
      * Diese Methode listet die Menüoptionen auf.
      */
@@ -42,38 +59,9 @@ public class Menu {
         Wait(250);
         System.out.println("5 - Das Spiel beenden");
     }
-    /**
-     * Diese Methode ruft das Menü auf und verarbeitet die Eingaben des Benutzers, bis das Spiel beendet wird.
-     */
-    public void CallMenu(){
 
-        int menuSelection=0;
-        boolean invalidInput;
-        boolean finishGame = false;
-        do{
-            ListMenu();
-        try {
-            invalidInput = false;
-            menuSelection = sc.nextInt();
-            DeleteScannerBuffer();
-            switch (menuSelection) {
-                case 1 -> CreateShip();
-                case 2 -> { System.out.println("Entschuldigung! Das Feature generieren ist momentan nicht verfuegbar"); Wait(2000);}
-                case 3 -> ShowCharactaristics();
-                case 4 -> DeleteShip();
-                case 5 -> finishGame = FinishGame(finishGame);
-            }
 
-        }catch (Exception e) {
-            System.out.println("Eingabe ungueltig, nochmal probieren!");
-            invalidInput = true;
-            DeleteScannerBuffer();
-        }
-        }while (invalidInput || menuSelection == 0 || !finishGame);
-
-    }
-
-    // Wahl 1
+    // Case 1
     /**
      * Diese Methode löscht den Scannerpuffer.
      */
@@ -152,15 +140,15 @@ public class Menu {
      Diese Methode lässt das Programm für eine bestimmte Anzahl von Millisekunden warten.
      @param millis Anzahl der Millisekunden, für die das Programm warten soll.
      */
-public void Wait(int millis){
-    try {
+    public void Wait(int millis){
+         try {
         Thread.sleep(millis);
-    } catch (InterruptedException e) {
+        } catch (InterruptedException e) {
         e.printStackTrace();
+        }
     }
-}
-    /**
 
+    /**
      Diese Methode gibt eine Liste der erstellten Schiffe aus oder zeigt eine entsprechende Meldung an, wenn keine Schiffe vorhanden sind.
      */
     private void ListCreatedShips(){
@@ -198,7 +186,7 @@ public void Wait(int millis){
 
         return searchedObj;
     }
-    //wahl 3
+    // Case 3
     /**
 
      Diese Methode zeigt den Steckbrief eines bestimmten Schiffs an.
@@ -212,7 +200,7 @@ public void Wait(int millis){
         searchedObj.Charactaristics();
     }
 
-    //wahl 4
+    //Case 4
     /**
 
      diese Methode löscht ein Schiff aus der Liste der erstellten Schiffe im Ozean.
@@ -226,7 +214,7 @@ public void Wait(int millis){
         ListCreatedShips();
     }
 
-    // wahl 5
+    // Case 5
     /**
 
      Beendet das Spiel.

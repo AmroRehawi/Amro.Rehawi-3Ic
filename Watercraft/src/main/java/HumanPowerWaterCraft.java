@@ -54,13 +54,46 @@ public class HumanPowerWaterCraft extends WaterCraft implements IVestWornable{
         PlaySound();
     }
     /**
+     * Gibt die Form des Boots aus. Diese Methode ist leer,
+     * da Boote, die von Menschenkraft angetrieben werden, keine bestimmte Form haben.
+     */
+    @Override
+    public void GetShape(){
+
+    }
+
+
+    /**
+     * Überprüft, ob die Crew Sicherheitswesten trägt und gibt eine entsprechende Meldung aus.
+     * @param crewWearingVests `true`, wenn alle Crewmitglieder Sicherheitswesten tragen, sonst `false`
+     */
+    public void checkCrowWearingVests(boolean crewWearingVests){
+        System.out.println("Haben alle Sicherheitswesten an? ja/nein");
+        Scanner sc = new Scanner(System.in);
+        String userInput = sc.nextLine();
+
+        if(userInput.equals("nein")){
+            System.out.println("Sicherheitswesten-Alarm! Nicht alle sehen wie Baustellen-Models aus!!");
+            crewWearingVests =false;
+        }
+    }
+    /**
      * Spielt einen Sound ab, der je nach Art des Boots unterschiedlich ist.
      * Der Sound wird aus einer Audio-Datei abgespielt
      * Der Name der Datei wird aus dem Klassentyp des Boots bestimmt.
      * Das Abspielen des Sounds wird durch das Ende des Clips beendet.
      * Bei einem Fehler wird eine Fehlermeldung ausgegeben.
      */
+    /**
+     * Überprüft, ob das Boot Pedale hat und gibt eine entsprechende Meldung aus.
+     */
 
+    public static void PedalesRecognizer(){
+        if(pedals){
+            HasPedales();
+        }
+        else {HasRowingBlades();}
+    }
     private void PlaySound(){
         Class<?> c = this.getClass();
         String audioName = "";
@@ -81,14 +114,6 @@ public class HumanPowerWaterCraft extends WaterCraft implements IVestWornable{
             e.printStackTrace();
         }
     }
-    /**
-     * Gibt die Form des Boots aus. Diese Methode ist leer,
-     * da Boote, die von Menschenkraft angetrieben werden, keine bestimmte Form haben.
-     */
-    @Override
-    public void GetShape(){
-
-    }
 
     private static void HasPedales(){
         System.out.println("Die quietschenden Pedale vom Tretboot sind noch top in Schuss");
@@ -97,30 +122,6 @@ public class HumanPowerWaterCraft extends WaterCraft implements IVestWornable{
         System.out.println("Das glitschige Ruderboot hat genügend Ruderblätter am Board");
     }
 
-    /**
-     * Überprüft, ob das Boot Pedale hat und gibt eine entsprechende Meldung aus.
-     */
 
-    public static void PedalesRecognizer(){
-        if(pedals){
-            HasPedales();
-        }
-        else {HasRowingBlades();}
-    }
-    /**
-     * Überprüft, ob die Crew Sicherheitswesten trägt und gibt eine entsprechende Meldung aus.
-     * @param crewWearingVests `true`, wenn alle Crewmitglieder Sicherheitswesten tragen, sonst `false`
-     */
-    public void checkCreaWearingVests(boolean crewWearingVests){
-        System.out.println("Haben alle Sicherheitswesten an? ja/nein");
-        Scanner sc = new Scanner(System.in);
-        String userInput = sc.nextLine();
-
-        if(userInput.equals("nein")){
-            System.out.println("Sicherheitswesten-Alarm! Nicht alle sehen wie Baustellen-Models aus!!");
-            crewWearingVests =false;
-        }
-
-    }
 
 }
