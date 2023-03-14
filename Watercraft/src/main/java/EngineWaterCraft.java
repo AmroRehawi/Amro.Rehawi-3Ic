@@ -13,7 +13,7 @@ public class EngineWaterCraft extends WaterCraft implements IRefuelable{
     Random rand = new Random();
     private int fuelCapacity = rand.nextInt(1, 100);
     /**
-     * Konstruktor der Klasse EngineWaterCraft.
+     * Konstruktor der Klasse EngineWaterCraft
      * @param _name Name des Wasserfahrzeugs
      * @param _produceDate Herstellungsdatum des Wasserfahrzeugs
      * @param _material Material des Wasserfahrzeugs

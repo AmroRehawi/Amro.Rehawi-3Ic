@@ -1,4 +1,7 @@
 public class Generator {
+    public void GenerateName(){
+
+    }
     /*
     public void GenerateShips(){
         // test methode. Darauf ist zu bauen

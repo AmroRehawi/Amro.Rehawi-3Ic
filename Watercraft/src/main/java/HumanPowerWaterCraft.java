@@ -10,13 +10,14 @@ import java.util.Scanner;
 
 public class HumanPowerWaterCraft extends WaterCraft implements IVestWornable{
     private static boolean pedals;
+
     private boolean crewWearingVest = true;
     /**
      * Erzeugt ein neues HumanPowerWaterCraft Objekt mit gegebenen Namen, Herstellungsdatum, Material und der Information, ob es Pedale hat oder nicht.
      * @param _name der Name des Boots
      * @param _produceDate das Herstellungsdatum des Boots
      * @param _material das Material des Boots
-     * @param _pedale `true`, wenn das Boot Pedale hat, `false`, wenn es Ruderblätter hat
+     * @param _pedale `true` , wen das Boot Pedale hat, `false`, wenn es Ruderblätter hat
      */
     HumanPowerWaterCraft(String _name, String _produceDate, String _material, boolean _pedale){
         super(_name,_produceDate,_material);
