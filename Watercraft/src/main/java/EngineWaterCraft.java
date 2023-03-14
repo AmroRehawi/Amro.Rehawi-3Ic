@@ -1,5 +1,4 @@
 /**
-
  Die Klasse EngineWaterCraft erbt von WaterCraft und implementiert das Interface IRefuelable.
  Sie repräsentiert ein Wasserfahrzeug mit Motor und Kraftstofftank.
  */
@@ -29,19 +28,17 @@ public class EngineWaterCraft extends WaterCraft implements IRefuelable{
      * Der User wird gefragt ob das Schiff betankt werden soll
      */
     public void Refuel(){
-        boolean refuel = false;
         String input;
-        int refulPercantageFromUser;
+        int refulingPercantage;
         Scanner sc = new Scanner(System.in);
         System.out.println("Aktueller Füllstand " + fuelCapacity + "%");
         System.out.println("Schiff tanken? ja/nein");
         input = sc.nextLine();
 
         if (input.equals("ja")){
-            refuel = true;
             System.out.println("Wie viel? ");
-            refulPercantageFromUser = sc.nextInt();
-            fuelCapacity = fuelCapacity + refulPercantageFromUser;
+            refulingPercantage = sc.nextInt();
+            fuelCapacity = fuelCapacity + refulingPercantage;
             System.out.println("Tank ist jetzt zu " + fuelCapacity + "% gefullt");
         }
     }

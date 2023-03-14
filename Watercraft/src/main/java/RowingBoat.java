@@ -1,6 +1,5 @@
 /**
-
- Die Klasse RowingBoat erweitert die Klasse HumanPowerWaterCraft und implementiert die Methoden SetPurpose und GetShape.
+ *Die Klasse RowingBoat erweitert die Klasse HumanPowerWaterCraft und implementiert die Methoden SetPurpose und GetShape.
  */
 public class RowingBoat extends HumanPowerWaterCraft{
     /**

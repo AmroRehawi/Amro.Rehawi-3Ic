@@ -24,8 +24,7 @@ public class Menu {
         myOcean.add(yamato);
         myOcean.add(jellyFish);
         myOcean.add(pedalPirates);
-        myOcean.add(bananaBoat
-        );
+        myOcean.add(bananaBoat);
     }
     /**
      * Diese Methode listet die Menüoptionen auf.
@@ -62,7 +61,7 @@ public class Menu {
                 case 2 -> { System.out.println("Entschuldigung! Das Feature generieren ist momentan nicht verfuegbar"); Wait(2000);}
                 case 3 -> ShowCharactaristics();
                 case 4 -> DeleteShip();
-                case 5 -> FinishGame(finishGame);
+                case 5 -> finishGame = FinishGame(finishGame);
             }
 
         }catch (Exception e) {
@@ -92,7 +91,7 @@ public class Menu {
     /**
      * Methode zum Anzeigen der verfügbaren Schiffstypen.
      */
-    private void AvailableShipTypes(){
+    private void ListAvailableShipTypes(){
 
         System.out.println("1 - Kriegsschif");
         Wait(500);
@@ -107,7 +106,7 @@ public class Menu {
      * Methode Definieren des Steckbriefes
      */
     private void DefineShipCharacteristics(){
-        boolean unvalidInput;
+        boolean invalidInput;
         do{
         System.out.println("Schiffsname eingeben:");
         name = sc.nextLine();
@@ -116,22 +115,23 @@ public class Menu {
         System.out.println("Material: ");
         material = sc.nextLine();
 
-        unvalidInput = false;
+        invalidInput = false;
         if(name.trim().isEmpty() || produceDate.trim().isEmpty() || material.trim().isEmpty() )
         {
             System.out.println("Kein Feld darf leer sein! Nochmal probieren:");
-            unvalidInput =true;
+            invalidInput =true;
         }
-        }while (unvalidInput);
+        }while (invalidInput);
     }
     /**
-
      Diese Methode erstellt ein neues Schiff basierend auf der vom Benutzer ausgewählten Option.
      */
     private void CreateShip(){
         int shipSelection;
+        boolean invalidInput = false;
+        do{
         System.out.println("Art des Schiffes waehlen: ");
-        AvailableShipTypes();
+        ListAvailableShipTypes();
         shipSelection = sc.nextInt();
         sc.nextLine();
         DefineShipCharacteristics();
@@ -140,7 +140,12 @@ public class Menu {
             case 2 -> myOcean.add(new ContainerShip(name, produceDate, material));
             case 3 -> myOcean.add(new PedalBoat(name, produceDate, material));
             case 4 -> myOcean.add(new RowingBoat(name, produceDate, material));
+            default -> {
+                System.out.println("Auswahl der Schiffsart ist nicht gueltig. Waehle eine Zahl zwischen 1 und 4.");
+                invalidInput = true;
+            }
         }
+        }while(invalidInput);
     }
     /**
 
@@ -227,9 +232,9 @@ public void Wait(int millis){
      Beendet das Spiel.
      @param finish true, um das Spiel zu beenden.
      */
-    private  void FinishGame(boolean finish){
+    private  boolean FinishGame(boolean finish){
         System.out.println("Das spiel wird beendet");
-        finish = true;
+        return finish = true;
     }
 
 }
